@@ -1,7 +1,9 @@
 .gradle/
 build/
 app/build/
-*.apk
 .idea/
 *.iml
 .DS_Store
+
+# Do not ignore APKs in the repo directory
+!repo/*.apk

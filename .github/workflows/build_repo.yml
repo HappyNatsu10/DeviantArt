@@ -1,4 +1,4 @@
-name: Build & Deploy Mihon Extension Repo
+name: Build & Commit Extension APK
 
 on:
   push:
@@ -12,19 +12,15 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
-  build-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}index.min.json
+  build-and-commit:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -36,17 +32,28 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew || true
 
-      - name: Build APK
-        run: ./gradlew assembleRelease --stacktrace || true
+      - name: Build Extension APK
+        run: ./gradlew assembleRelease --stacktrace
 
-      - name: Update Repo Catalog
+      - name: Update Repo Folder
         run: |
           mkdir -p repo
-          APK_FILE=$(find app/build/outputs/apk/release -name "*.apk" 2>/dev/null | head -n 1)
-          if [ -n "$APK_FILE" ]; then
+          APK_FILE=$(find app/build/outputs/apk -name "*.apk" | head -n 1)
+          if [ -f "$APK_FILE" ]; then
+            echo "Found built APK at $APK_FILE"
             cp "$APK_FILE" repo/tachiyomi-all.deviantart-v1.4.1.apk
+          else
+            echo "ERROR: APK build failed to output apk file!"
+            exit 1
           fi
           python3 scripts/build_repo.py
+
+      - name: Commit and Push Built APK to Main
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add repo/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-build & update extension APK and index catalog [skip ci]" && git push origin main)
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
