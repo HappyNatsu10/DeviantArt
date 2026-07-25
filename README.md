@@ -2,68 +2,56 @@
 
 A fully functional, high-performance Kotlin extension for **Mihon**, **Tachiyomi**, **Tachimanga**, **Aniyomi**, and compatible readers.
 
-## 🌟 Key Features
-
-- 🖼️ **Popular & Latest Feed**: Browse trending, popular, and latest artworks directly from DeviantArt.
-- 🔍 **Advanced Search & Filtering**:
-  - Search by keywords (e.g. `landscape`, `wallpaper`, `concept art`).
-  - Search by Artist / User using `@username` or `by:username`.
-  - Filter by Category (Digital Art, Photography, Anime/Manga, 3D Art, Traditional, Wallpapers).
-  - Sort by Popular, Latest, or All-Time Popular.
-- ⚡ **High Resolution Image Extractor**: Resolves Wix Media parameters to deliver maximum resolution images without watermarks or downscaling.
-- 🛡️ **Stable RSS & oEmbed Core**: Built on DeviantArt's official RSS 2.0 XML and oEmbed endpoints for 100% uptime and protection against web layout changes.
-
 ---
 
-## 🛠️ Repository Structure
+## 🌐 Putting the Extension Online (Free GitHub Pages Hosting)
 
-```text
-DeviantArt Ext/
-├── app/
-│   ├── build.gradle.kts
-│   └── src/main/java/eu/kanade/tachiyomi/extension/all/deviantart/
-│       ├── DeviantArt.kt         # Core HttpSource extension class
-│       ├── DeviantArtFilters.kt  # Custom search & category filters
-│       ├── DeviantArtDto.kt      # Data Transfer Objects
-│       └── DeviantArtUtils.kt    # Image & HTML utilities
-├── repo/
-│   └── index.min.json            # Mihon Extension Repo Index
-├── server.py                     # Local repo server script
-├── build.gradle.kts              # Root build configuration
-└── settings.gradle.kts           # Gradle settings
-```
+Follow these quick steps to host your custom extension repository online so anyone can add it to Mihon anywhere in the world!
 
----
+### Step 1: Create a Repository on GitHub
+1. Go to [github.com/new](https://github.com/new)
+2. Name your repository (e.g., `deviantart-mihon-extension`).
+3. Set visibility to **Public** (required for free GitHub Pages).
+4. Click **Create repository** (do NOT add a README or .gitignore as we already created them).
 
-## 🚀 How to Add & Use in Mihon
-
-### Option A: Local Repo Server (Easiest)
-
-1. Run the Python repository server:
-   ```bash
-   python server.py
-   ```
-2. Note the Repository URL displayed in the terminal output (e.g., `http://192.168.1.5:8080/index.min.json`).
-3. Open **Mihon** on your Android device.
-4. Navigate to **More > Settings > Browse > Extension repos**.
-5. Tap **Add Repo** and paste your repository URL.
-6. Go to **Browse > Extensions** tab, find **DeviantArt**, and tap **Install**.
-
-### Option B: Hosting on GitHub Pages
-
-1. Push this project to GitHub.
-2. Enable GitHub Pages on the `repo` directory or branch.
-3. Add the GitHub Pages URL to Mihon under **Settings > Browse > Extension repos**:
-   `https://<your-username>.github.io/<repo-name>/index.min.json`
-
----
-
-## 🔨 Building from Source
-
-To compile the `.apk` package locally using Gradle:
+### Step 2: Push your local code to GitHub
+Run the following commands in your terminal from this project folder:
 
 ```bash
-gradlew assembleRelease
+git remote add origin https://github.com/<YOUR-GITHUB-USERNAME>/<YOUR-REPO-NAME>.git
+git branch -M main
+git push -u origin main
 ```
 
-The output `.apk` file will be generated in `app/build/outputs/apk/release/`.
+### Step 3: Enable GitHub Pages
+1. On your GitHub repository page, click **Settings**.
+2. On the left sidebar, click **Pages**.
+3. Under **Build and deployment -> Source**, select **GitHub Actions**.
+4. That's it! GitHub Actions will automatically build the APK and deploy your repository catalog to GitHub Pages.
+
+---
+
+## 📲 Your Online Mihon Extension Repository URL
+
+Once deployed, your permanent online repository URL to enter into Mihon is:
+
+```text
+https://<YOUR-GITHUB-USERNAME>.github.io/<YOUR-REPO-NAME>/index.min.json
+```
+
+### How to Add in Mihon:
+1. Open **Mihon** on your Android device.
+2. Go to **More > Settings > Browse > Extension repos**.
+3. Tap **Add Repo** and paste your online URL:
+   `https://<YOUR-GITHUB-USERNAME>.github.io/<YOUR-REPO-NAME>/index.min.json`
+4. Go to **Browse > Extensions** tab, find **DeviantArt**, and tap **Install**!
+
+---
+
+## ⚡ Alternative Free Online Hosting (Vercel / Netlify / Render / Cloudflare Pages)
+
+If you prefer hosting just the `repo/` directory on Vercel or Netlify:
+1. Connect your repository to **Vercel** or **Cloudflare Pages**.
+2. Set Build Output Directory to `repo`.
+3. Your online Mihon repository URL will be:
+   `https://<your-project>.vercel.app/index.min.json` or `https://<your-project>.pages.dev/index.min.json`
