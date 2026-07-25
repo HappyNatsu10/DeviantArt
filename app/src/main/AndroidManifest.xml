@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="eu.kanade.tachiyomi.extension.all.deviantart">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:label="Tachiyomi: DeviantArt"
+        android:supportsRtl="true">
+
+        <meta-data
+            android:name="tachiyomi.extension.class"
+            android:value=".DeviantArt" />
+        <meta-data
+            android:name="tachiyomi.extension.factory"
+            android:value="eu.kanade.tachiyomi.extension.all.deviantart.DeviantArt" />
+        <meta-data
+            android:name="tachiyomi.extension.hasReadme"
+            android:value="1" />
+        <meta-data
+            android:name="tachiyomi.extension.nsfw"
+            android:value="0" />
+        <meta-data
+            android:name="tachiyomi.extension.pkg"
+            android:value="eu.kanade.tachiyomi.extension.all.deviantart" />
+    </application>
+
+</manifest>
