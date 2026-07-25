@@ -43,7 +43,7 @@ https://<YOUR-GITHUB-USERNAME>.github.io/<YOUR-REPO-NAME>/index.min.json
 1. Open **Mihon** on your Android device.
 2. Go to **More > Settings > Browse > Extension repos**.
 3. Tap **Add Repo** and paste your online URL:
-   `https://<YOUR-GITHUB-USERNAME>.github.io/<YOUR-REPO-NAME>/index.min.json`
+   `https://HappyNatsu10.github.io/DeviantArt/index.min.json`
 4. Go to **Browse > Extensions** tab, find **DeviantArt**, and tap **Install**!
 
 ---
