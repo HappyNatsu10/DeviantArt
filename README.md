@@ -33,17 +33,17 @@ git push -u origin main
 
 ## 📲 Your Online Mihon Extension Repository URL
 
-Once deployed, your permanent online repository URL to enter into Mihon is:
+Use the **Raw GitHub URL** below in Mihon (works instantly without needing GitHub Pages build setup):
 
 ```text
-https://<YOUR-GITHUB-USERNAME>.github.io/<YOUR-REPO-NAME>/index.min.json
+https://raw.githubusercontent.com/HappyNatsu10/DeviantArt/main/repo/index.min.json
 ```
 
 ### How to Add in Mihon:
 1. Open **Mihon** on your Android device.
 2. Go to **More > Settings > Browse > Extension repos**.
-3. Tap **Add Repo** and paste your online URL:
-   `https://HappyNatsu10.github.io/DeviantArt/index.min.json`
+3. Tap **Add Repo** and paste the URL:
+   `https://raw.githubusercontent.com/HappyNatsu10/DeviantArt/main/repo/index.min.json`
 4. Go to **Browse > Extensions** tab, find **DeviantArt**, and tap **Install**!
 
 ---
